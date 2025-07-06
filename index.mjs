@@ -21,15 +21,12 @@ export default function createServer(applicationDir, {
 
     let start = +new Date()
 
-    let endResponse = res.end
-    res.end = function() {
-      endResponse.bind(res, ...arguments)()
+    res.on('finish', () => {
       let end = +new Date()
-
       if (!urlData.pathname.startsWith('/static/')) {
         requestEndCallback(req, res, { time: end - start })
       }
-    }
+    })
 
     next()
   })
