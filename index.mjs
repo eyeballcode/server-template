@@ -4,8 +4,6 @@ import compression from 'compression'
 import path from 'path'
 import minify from 'express-minify'
 import uglifyJS from 'uglify-js'
-// import expressSession from 'express-session'
-// import createMongoDBStore from 'connect-mongodb-session'
 import expressWS from '@small-tech/express-ws'
 
 export default function createServer(applicationDir, { 
@@ -20,7 +18,6 @@ export default function createServer(applicationDir, {
   app.use((req, res, next) => {
     let urlData = new URL(req.url, `${req.protocol}://${req.hostname}`)
     req.urlData = urlData
-    req.ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
 
     let start = +new Date()
 
