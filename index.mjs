@@ -5,6 +5,7 @@ import path from 'path'
 import minify from 'express-minify'
 import uglifyJS from 'uglify-js'
 import expressWS from '@small-tech/express-ws'
+import expressSession from 'express-session'
 
 export default function createServer(applicationDir, {
   appName = 'transportme-default-server',
