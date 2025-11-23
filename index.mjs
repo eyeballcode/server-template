@@ -86,12 +86,11 @@ export default function createServer(applicationDir, {
   app.use((req, res, next) => {
     res.setHeader('Strict-Transport-Security', 'max-age=31536000')
 
-    res.setHeader('X-Xss-Protection', '1; mode=block')
     res.setHeader('X-Content-Type-Options', 'nosniff')
     res.setHeader('X-Download-Options', 'noopen')
 
     res.setHeader('Referrer-Policy', 'no-referrer')
-    res.setHeader('Feature-Policy', "geolocation 'self'; document-write 'none'; microphone 'none'; camera 'none';")
+    res.setHeader('Permission-Policy', "geolocation=(self), microphone=(), camera=(), display-capture=(), payment=()")
 
     next()
   })
